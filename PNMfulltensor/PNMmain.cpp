@@ -17,5 +17,6 @@ int main ()
     num_y = 200;
     total_PB = num_x * num_y; 
     double pore_bodies[total_PB];
+    
     return 0;
 }
