@@ -29,7 +29,7 @@ double Error(double x)
 	double err;
 	er = 1.0;
 	r = 1.0;
-	if (fabs(x) <= 3.50)
+	if (fabs(x) < 3.50)
 	{
 		for (int i = 1; i<=50; i++)
 		{
@@ -50,7 +50,7 @@ double Error(double x)
 		}
 		c0 = exp(-x2) / (fabs(x) * sqrt(pi));
 		err = 1.0 - c0 * er;
-		if (x <= 0)
+		if (x < 0)
 			err = -err;
 	}
 	return err;
