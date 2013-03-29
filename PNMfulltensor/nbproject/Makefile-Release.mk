@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/lognormal.o \
 	${OBJECTDIR}/Error.o \
+	${OBJECTDIR}/rad_throat.o \
 	${OBJECTDIR}/PNMmain.o
 
 
@@ -79,6 +80,11 @@ ${OBJECTDIR}/Error.o: Error.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Error.o Error.cpp
+
+${OBJECTDIR}/rad_throat.o: rad_throat.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/rad_throat.o rad_throat.cpp
 
 ${OBJECTDIR}/PNMmain.o: PNMmain.cpp 
 	${MKDIR} -p ${OBJECTDIR}

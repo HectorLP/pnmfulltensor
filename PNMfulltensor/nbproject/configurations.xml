@@ -16,6 +16,7 @@
       <itemPath>PNMmain.cpp</itemPath>
       <itemPath>lognormal.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>rad_throat.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
