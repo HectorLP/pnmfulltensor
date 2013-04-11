@@ -2,46 +2,53 @@
  tensor.
 */
 #include <iostream>
+#include <fstream>
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
-double lognormal (int num_x, int num_y, double r_min, double r_max,
+double *lognormal (int num_x, int num_y, double r_min, double r_max,
                   double r_mean, double r_var);
 
 int main ()
 {
     using namespace std;
     //srand(time(NULL));
-    int num_x, num_y, total_PB; //num_x, num_y: the number of pore bodies in each
+    long num_x, num_y, total_PB; //num_x, num_y: the number of pore bodies in each
                                 //direction; total_PB: total number of pore bodies
     cout << "Please input the domain size (x - direction): ";
     cin >> num_x;
-    cout << endl;
+    cout << "\n";
     cout << "Please input the domain size (y - direction): ";
     cin >> num_y;
-    cout << endl;
+    cout << "\n";
     total_PB = num_x * num_y; 
     //statistic data on pore space
     double r_min, r_max, r_mean, r_var;
     cout << "Please input the value for minimum value of pore body radius: ";
     cin >> r_min;
-    cout << endl;
+    cout << "\n";
     cout << "Please input the value for maximum value of pore body radius: ";
     cin >> r_max;
-    cout << endl;
+    cout << "\n";
     cout << "Please input the value for the mean value of pore body radius: ";
     cin >> r_mean;
-    cout << endl;
+    cout << "\n";
     cout << "Please input the value for the variance of pore body radius: ";
     cin >> r_var;
-    cout << endl;
+    cout << "\n";
     double pore_bodies[total_PB];
     double *PB = lognormal(num_x, num_y, r_min, r_max, r_mean, r_var);
+    ofstream PBfile("/home/hectorlp/Data/PB_radius.dat");       /*write the pore
+    bodies radii into a file with fixed path*/
     for (int i = 0; i < total_PB; i++)
     {
         pore_bodies[i] = PB[i];
+        PBfile << pore_bodies[i] << "\n";
     }
     delete[] PB;
+    PBfile.close();
+    
     cout << "The radii of pore bodies have been generated. "<<endl;
+    //double pore_throats[];
     return 0;
 }

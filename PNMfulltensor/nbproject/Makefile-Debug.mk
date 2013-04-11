@@ -35,11 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/lognormal.o \
 	${OBJECTDIR}/Error.o \
+	${OBJECTDIR}/PNMmain.o \
+	${OBJECTDIR}/lognormal.o \
+	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/rad_throat.o \
-	${OBJECTDIR}/PNMmain.o
+	${OBJECTDIR}/struc_pt.o
 
 
 # C Compiler Flags
@@ -64,32 +65,37 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pnmfulltensor: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pnmfulltensor ${OBJECTFILES} ${LDLIBSOPTIONS} 
-
-${OBJECTDIR}/main.o: main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
-
-${OBJECTDIR}/lognormal.o: lognormal.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/lognormal.o lognormal.cpp
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pnmfulltensor ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Error.o: Error.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Error.o Error.cpp
 
+${OBJECTDIR}/PNMmain.o: PNMmain.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/PNMmain.o PNMmain.cpp
+
+${OBJECTDIR}/lognormal.o: lognormal.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/lognormal.o lognormal.cpp
+
+${OBJECTDIR}/main.o: main.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+
 ${OBJECTDIR}/rad_throat.o: rad_throat.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/rad_throat.o rad_throat.cpp
 
-${OBJECTDIR}/PNMmain.o: PNMmain.cpp 
+${OBJECTDIR}/struc_pt.o: struc_pt.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/PNMmain.o PNMmain.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/struc_pt.o struc_pt.cpp
 
 # Subprojects
 .build-subprojects:
