@@ -6,8 +6,12 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <cstdio>
+
 double *lognormal (int num_x, int num_y, double r_min, double r_max,
                   double r_mean, double r_var);
+long** cm_diagonal(long num_x, long num_y);
+long structure_pt(long num_x, long num_y);
 
 int main ()
 {
@@ -49,6 +53,20 @@ int main ()
     PBfile.close();
     
     cout << "The radii of pore bodies have been generated. "<<endl;
-    //double pore_throats[];
+    /*construct the connectivity matrix and throat-body structure*/
+    long total_num_throats = structure_pt(num_x, num_y);
+    long connectivity_matrix[total_num_throats][2];
+    long **MX_connectivity = cm_diagonal(num_x, num_y);
+    ofstream ConnectMXfile("/home/hectorlp/Data/connectivity_mx.dat");
+    for (int i = 0; i < total_num_throats; i++)
+    {
+        connectivity_matrix[i][0] = MX_connectivity[i][0];
+        connectivity_matrix[i][1] = MX_connectivity[i][1];
+        ConnectMXfile << connectivity_matrix[i][0];
+        ConnectMXfile.width(8);
+        ConnectMXfile << connectivity_matrix[i][1] << "\n";
+    }
+    //delete[] MX_connectivity;
+    ConnectMXfile.close();
     return 0;
 }
