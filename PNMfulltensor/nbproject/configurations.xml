@@ -14,6 +14,7 @@
                    projectFiles="true">
       <itemPath>Error.cpp</itemPath>
       <itemPath>PNMmain.cpp</itemPath>
+      <itemPath>calculation_throats.cpp</itemPath>
       <itemPath>lognormal.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>rad_throat.cpp</itemPath>
@@ -45,6 +46,8 @@
       <item path="Error.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PNMmain.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="calculation_throats.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="lognormal.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -79,6 +82,8 @@
       <item path="Error.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PNMmain.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="calculation_throats.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="lognormal.cpp" ex="false" tool="1" flavor2="0">
       </item>

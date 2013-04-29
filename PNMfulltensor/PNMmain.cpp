@@ -68,5 +68,23 @@ int main ()
     }
     //delete[] MX_connectivity;
     ConnectMXfile.close();
+    cout << "clean the memory for the connectivity matrix.\n";
+    for (int i = 0; i < total_num_throats; i++)
+    {
+        delete [] MX_connectivity[i];
+    }
+    delete [] MX_connectivity;
+    /*calculate radii of pore throats*/
+    
+    double pore_throats[total_num_throats], length_throats_x[num_x - 1], 
+            length_throats[num_y - 1];
+    using std::max;
+    for (int i = 0; i < num_y - 1; i++)
+    {
+        
+    }
+    
+    /*Generate the buffering part*/
+    
     return 0;
 }

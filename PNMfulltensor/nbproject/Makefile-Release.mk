@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Error.o \
 	${OBJECTDIR}/PNMmain.o \
+	${OBJECTDIR}/calculation_throats.o \
 	${OBJECTDIR}/lognormal.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/rad_throat.o \
@@ -76,6 +77,11 @@ ${OBJECTDIR}/PNMmain.o: PNMmain.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/PNMmain.o PNMmain.cpp
+
+${OBJECTDIR}/calculation_throats.o: calculation_throats.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/calculation_throats.o calculation_throats.cpp
 
 ${OBJECTDIR}/lognormal.o: lognormal.cpp 
 	${MKDIR} -p ${OBJECTDIR}
