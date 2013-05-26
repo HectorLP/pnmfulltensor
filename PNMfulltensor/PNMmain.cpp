@@ -12,6 +12,10 @@ double *lognormal (int num_x, int num_y, double r_min, double r_max,
                   double r_mean, double r_var);
 long** cm_diagonal(long num_x, long num_y);
 long structure_pt(long num_x, long num_y);
+double *throats_length_x(long num_layer, long num_in_row, double pore_bodies[]);
+double *throats_length_y(long num_layer, long num_in_row, double pore_bodies[]);
+double *throats_length_diagonal(double length_x[], double length_y[], long dir_y,
+                                long dir_x);
 
 int main ()
 {
@@ -74,16 +78,55 @@ int main ()
         delete [] MX_connectivity[i];
     }
     delete [] MX_connectivity;
-    /*calculate radii of pore throats*/
-    
+    /*calculate radii of pore throats*/   
     double pore_throats[total_num_throats], length_throats_x[num_x - 1], 
-            length_throats[num_y - 1];
-    using std::max;
-    for (int i = 0; i < num_y - 1; i++)
+            length_throats_y[num_y - 1], length_throats_diagonal[(num_x - 1) * (num_y - 1)];
+    double all_throats_length[total_num_throats];
+    double *LT_y = throats_length_y(num_y, num_x, pore_bodies);
+    double *LT_x = throats_length_x(num_x, num_y, pore_bodies);
+    for (int i = 0; i < num_y-1; i++)
     {
-        
+        length_throats_y[i] = LT_y[i];
     }
-    
+    delete[] LT_y;
+    for (int i = 0; i < num_x-1; i++)
+    {
+        length_throats_x[i] = LT_x[i];
+    }
+    delete[] LT_x;
+    long length_y_dir = sizeof(length_throats_y) / sizeof(double);
+    long length_x_dir = sizeof(length_throats_x) / sizeof(double);
+    double *LD = throats_length_diagonal(length_throats_x, length_throats_y,
+                length_y_dir, length_x_dir);
+    for (int i = 0; i < (num_x - 1) * (num_y - 1); i++)
+    {
+        length_throats_diagonal[i] = LD[i];
+    }
+    delete[] LD;
+    for (int i = 0; i < num_y; i++)
+    {
+        for (int j = 0; j < num_x - 1; j++)
+        {
+            all_throats_length[j+i*(num_x - 1)] = length_throats_x[j];
+        }
+    }
+    for (int i = 0; i < num_y-1; i++)
+    {
+        for (int j = 0; j < num_x; j++)
+        {
+            all_throats_length[(num_x -1 ) * num_y + j + i*(num_x)] = length_throats_y[i];
+        }
+    }
+    long index_diagonal;
+    index_diagonal = (num_x - 1) * num_y + num_x * (num_y - 1) - 1; 
+    for (int i = 0; i < num_y -1; i++)
+    {
+        for (int j = 0; j < num_x - 1; j+=2)
+        {
+            all_throats_length[index_diagonal + 1] = length_throats_diagonal[];
+        }
+    }
+
     /*Generate the buffering part*/
     
     return 0;
